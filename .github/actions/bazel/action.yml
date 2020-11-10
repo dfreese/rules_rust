@@ -1,0 +1,25 @@
+name: "Bazel"
+description: "Run a bazel command on a particular directory"
+author: "David Freese"
+inputs:
+  version:
+    description: "The version of bazel to use"
+    required: true
+  command:
+    description: "The bazel command to run"
+    required: true
+  arguments:
+    description: "Arguments to pass to bazel after the bazel command"
+    required: false
+  directory:
+    description: "The directory in which to run the command"
+    required: false
+  targets:
+    description: "Targets on which to run the command"
+    required: false
+  query:
+    description: "A Bazel query describing which"
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"

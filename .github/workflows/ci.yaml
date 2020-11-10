@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+
+jobs:
+  bazel:
+    name: Build/Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # The two most recent versions and the current min supported version
+        version: ["3.0.0", "3.6.0", "3.7.0"]
+        command: ["build", "test"]
+    steps:
+      - name: Checkout
+        uses: verily-src/checkout@v2
+      - name: Run Bazel
+        uses: "./.github/actions/bazel"
+        with:
+          version: ${{ matrix.version }}
+          command: ${{ matrix.command }}
+          query: "//... - @examples//... - attr('tags', 'manual', //...)"
