@@ -78,14 +78,6 @@ tasks:
     working_directory: examples
     test_targets:
       - //...
-  docs_linux:
-    name: Docs
-    platform: ubuntu1804
-    working_directory: docs
-    build_targets:
-      - //...
-    run_targets:
-      - "//:test_docs"
   clippy_examples:
     name: Clippy on Examples
     platform: ubuntu1804
